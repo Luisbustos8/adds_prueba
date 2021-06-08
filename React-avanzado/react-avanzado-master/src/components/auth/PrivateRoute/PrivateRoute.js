@@ -1,0 +1,22 @@
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {getIsLogged}  from '../../../store/selectors';
+
+const PrivateRoute = props => {
+  const isLogged = useSelector(getIsLogged);
+
+  return isLogged ? (
+    <Route {...props} />
+  ) : (
+    <Route>
+      {({ location }) => (
+        <Redirect to={{ pathname: '/login', state: { from: location } }} />
+      )}
+    </Route>
+  );
+};
+
+// const mapStateToProps = (state) => ({isLogged: getIsLogged(state) })
+
+export default PrivateRoute;
