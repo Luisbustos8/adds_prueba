@@ -32,6 +32,8 @@ const Home = ({isLogged, handleLogout}) => {
                 )
         };
     };
+
+    console.log('hola')
     
 
 
